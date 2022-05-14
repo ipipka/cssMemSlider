@@ -1,0 +1,48 @@
+/**
+ * Slider (pure css)
+*/
+
+:root {
+    --indent: 40px;
+}
+
+/* slider */
+.css-slider {
+
+}
+
+/* list */
+.css-slider__list {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+
+/* item */
+.css-slider__item {
+    flex-basis: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: var(--indent);
+    text-align: center;
+}
+
+.css-slider__img {
+
+}
+
+.css-slider__title {
+
+}
+
+/* control */
+.css-slider__control {
+
+}
+
+.css-slider__label {
+
+}
