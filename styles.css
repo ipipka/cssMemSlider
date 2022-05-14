@@ -5,6 +5,7 @@
 :root {
     --indent-small: 2rem;
     --indent: 4rem;
+    --control: 4rem;
     --color-bg: #f1f1f1;
 }
 
@@ -84,19 +85,23 @@
 }
 
 .css-slider__label {
-    padding: 1rem;
-    width: 4rem;
-    height: 4rem;
+    padding: calc(var(--control) / 4);
+    width: var(--control);
+    height: var(--control);
     background-color: #ccc;
     background-clip: content-box;
-    border-radius: 2rem;
+    border-radius: calc(var(--control) / 2);
     cursor: pointer;
     transition: background-color 0.3s ease-in-out, padding 0.2s ease-in-out;
 }
 
 .css-slider__label:hover {
-    background-color: #414141;
-    padding: 1.5rem;
+    background-color: #999;
+    padding: calc(var(--control) / 2.5);
+}
+
+.css-slider__label:active {
+    background-color: #333;
 }
 
 /* slide img & text */
@@ -143,7 +148,7 @@
 .css-slider__control[data-value="5"]:checked ~ .css-slider__footer .css-slider__label:nth-child(5),
 .css-slider__control[data-value="6"]:checked ~ .css-slider__footer .css-slider__label:nth-child(6),
 .css-slider__control[data-value="7"]:checked ~ .css-slider__footer .css-slider__label:nth-child(7) {
-    padding: 1rem;
+    padding: calc(var(--control) / 4);
     cursor: default;
 }
 
@@ -163,8 +168,30 @@
     background-color: lightskyblue;
 }
 .css-slider__control[data-value="6"]:checked ~ .css-slider__footer .css-slider__label:nth-child(6) {
-    background-color: dodgerblue;
+    background-color: royalblue;
 }
 .css-slider__control[data-value="7"]:checked ~ .css-slider__footer .css-slider__label:nth-child(7) {
     background-color: blueviolet;
+}
+
+/* mobile */
+@media (max-width: 767px) {
+    :root {
+        --indent-small: 1rem;
+        --indent: 2rem;
+        --control: 3rem;
+    }
+
+    .css-slider__footer {
+        flex-direction: column;
+    }
+
+    .css-slider__text {
+        max-width: 100%;
+        order: 2;
+    }
+
+    .css-slider__labels {
+        order: 1;
+    }
 }
