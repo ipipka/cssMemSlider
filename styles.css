@@ -3,23 +3,26 @@
 */
 
 :root {
+    --indent-small: 2rem;
     --indent: 4rem;
+    --color-bg: #f1f1f1;
 }
 
 /* slider */
 .css-slider {
-
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 /* list */
 .css-slider__list {
     overflow: hidden;
+    flex-grow: 1;
     width: 100vw;
-    height: 100vh;
     display: flex;
     align-items: center;
 }
-
 
 /* item */
 .css-slider__item {
@@ -27,21 +30,46 @@
     flex-basis: 100%;
     flex-grow: 0;
     flex-shrink: 0;
-    padding: var(--indent);
+    border: solid var(--color-bg);
+    border-width: var(--indent) var(--indent) var(--indent-small);
     text-align: center;
     transition: margin-left 0.3s ease-in-out;
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .css-slider__img {
-    object-fit: contain;
+    object-fit: cover;
     max-width: 100%;
     max-height: 100%;
 }
 
-.css-slider__title {
+/* footer */
+.css-slider__footer {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg);
+}
 
+/* text */
+.css-slider__text {
+    display: flex;
+    overflow: hidden;
+    font-size: 1.6rem;
+    flex-grow: 1;
+}
+
+.css-slider__title {
+    margin: 0;
+    flex-basis: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: var(--indent-small) var(--indent);
+    transition: margin-left 0.3s ease-in-out;
+    max-width: 100%;
 }
 
 /* control */
@@ -51,6 +79,8 @@
 
 .css-slider__labels {
     display: flex;
+    padding: 0 var(--indent);
+    flex-shrink: 0;
 }
 
 .css-slider__label {
@@ -61,31 +91,80 @@
     background-clip: content-box;
     border-radius: 2rem;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, padding 0.2s ease-in-out;
 }
 
 .css-slider__label:hover {
-    background-color: #666;
+    background-color: #414141;
+    padding: 1.5rem;
 }
 
-/* slide */
-.css-slider__control[data-value="1"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -0.001%; }
-.css-slider__control[data-value="2"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -100%; }
-.css-slider__control[data-value="3"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -200%; }
-.css-slider__control[data-value="4"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -300%; }
-.css-slider__control[data-value="5"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -400%; }
-.css-slider__control[data-value="6"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -500%; }
-.css-slider__control[data-value="7"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -600%; }
+/* slide img & text */
+.css-slider__control[data-value="1"]:checked ~ .css-slider__footer .css-slider__title:first-child,
+.css-slider__control[data-value="1"]:checked ~ .css-slider__list .css-slider__item:first-child {
+    margin-left: -0.001%;
+}
 
+.css-slider__control[data-value="2"]:checked ~ .css-slider__footer .css-slider__title:first-child,
+.css-slider__control[data-value="2"]:checked ~ .css-slider__list .css-slider__item:first-child {
+    margin-left: -100%;
+}
+
+.css-slider__control[data-value="3"]:checked ~ .css-slider__footer .css-slider__title:first-child,
+.css-slider__control[data-value="3"]:checked ~ .css-slider__list .css-slider__item:first-child {
+    margin-left: -200%;
+}
+
+.css-slider__control[data-value="4"]:checked ~ .css-slider__footer .css-slider__title:first-child,
+.css-slider__control[data-value="4"]:checked ~ .css-slider__list .css-slider__item:first-child {
+    margin-left: -300%;
+}
+
+.css-slider__control[data-value="5"]:checked ~ .css-slider__footer .css-slider__title:first-child,
+.css-slider__control[data-value="5"]:checked ~ .css-slider__list .css-slider__item:first-child {
+    margin-left: -400%;
+}
+
+.css-slider__control[data-value="6"]:checked ~ .css-slider__footer .css-slider__title:first-child,
+.css-slider__control[data-value="6"]:checked ~ .css-slider__list .css-slider__item:first-child {
+    margin-left: -500%;
+}
+
+.css-slider__control[data-value="7"]:checked ~ .css-slider__footer .css-slider__title:first-child,
+.css-slider__control[data-value="7"]:checked ~ .css-slider__list .css-slider__item:first-child {
+    margin-left: -600%;
+}
 
 /* active label */
-.css-slider__control[data-value="1"]:checked ~ .css-slider__labels .css-slider__label:nth-child(1),
-.css-slider__control[data-value="2"]:checked ~ .css-slider__labels .css-slider__label:nth-child(2),
-.css-slider__control[data-value="3"]:checked ~ .css-slider__labels .css-slider__label:nth-child(3),
-.css-slider__control[data-value="4"]:checked ~ .css-slider__labels .css-slider__label:nth-child(4),
-.css-slider__control[data-value="5"]:checked ~ .css-slider__labels .css-slider__label:nth-child(5),
-.css-slider__control[data-value="6"]:checked ~ .css-slider__labels .css-slider__label:nth-child(6),
-.css-slider__control[data-value="7"]:checked ~ .css-slider__labels .css-slider__label:nth-child(7) {
-    background-color: red;
+.css-slider__control[data-value="1"]:checked ~ .css-slider__footer .css-slider__label:nth-child(1),
+.css-slider__control[data-value="2"]:checked ~ .css-slider__footer .css-slider__label:nth-child(2),
+.css-slider__control[data-value="3"]:checked ~ .css-slider__footer .css-slider__label:nth-child(3),
+.css-slider__control[data-value="4"]:checked ~ .css-slider__footer .css-slider__label:nth-child(4),
+.css-slider__control[data-value="5"]:checked ~ .css-slider__footer .css-slider__label:nth-child(5),
+.css-slider__control[data-value="6"]:checked ~ .css-slider__footer .css-slider__label:nth-child(6),
+.css-slider__control[data-value="7"]:checked ~ .css-slider__footer .css-slider__label:nth-child(7) {
+    padding: 1rem;
     cursor: default;
+}
+
+.css-slider__control[data-value="1"]:checked ~ .css-slider__footer .css-slider__label:nth-child(1) {
+    background-color: red;
+}
+.css-slider__control[data-value="2"]:checked ~ .css-slider__footer .css-slider__label:nth-child(2) {
+    background-color: orange;
+}
+.css-slider__control[data-value="3"]:checked ~ .css-slider__footer .css-slider__label:nth-child(3) {
+    background-color: gold;
+}
+.css-slider__control[data-value="4"]:checked ~ .css-slider__footer .css-slider__label:nth-child(4) {
+    background-color: olivedrab;
+}
+.css-slider__control[data-value="5"]:checked ~ .css-slider__footer .css-slider__label:nth-child(5) {
+    background-color: lightskyblue;
+}
+.css-slider__control[data-value="6"]:checked ~ .css-slider__footer .css-slider__label:nth-child(6) {
+    background-color: dodgerblue;
+}
+.css-slider__control[data-value="7"]:checked ~ .css-slider__footer .css-slider__label:nth-child(7) {
+    background-color: blueviolet;
 }
