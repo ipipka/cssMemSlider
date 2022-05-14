@@ -3,7 +3,7 @@
 */
 
 :root {
-    --indent: 40px;
+    --indent: 4rem;
 }
 
 /* slider */
@@ -23,15 +23,21 @@
 
 /* item */
 .css-slider__item {
+    margin-left: -0.001%;
     flex-basis: 100%;
     flex-grow: 0;
     flex-shrink: 0;
     padding: var(--indent);
     text-align: center;
+    transition: margin-left 0.3s ease-in-out;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .css-slider__img {
-
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .css-slider__title {
@@ -40,9 +46,46 @@
 
 /* control */
 .css-slider__control {
+    display: none;
+}
 
+.css-slider__labels {
+    display: flex;
 }
 
 .css-slider__label {
+    padding: 1rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: #ccc;
+    background-clip: content-box;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
 
+.css-slider__label:hover {
+    background-color: #666;
+}
+
+/* slide */
+.css-slider__control[data-value="1"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -0.001%; }
+.css-slider__control[data-value="2"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -100%; }
+.css-slider__control[data-value="3"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -200%; }
+.css-slider__control[data-value="4"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -300%; }
+.css-slider__control[data-value="5"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -400%; }
+.css-slider__control[data-value="6"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -500%; }
+.css-slider__control[data-value="7"]:checked ~ .css-slider__list .css-slider__item:first-child { margin-left: -600%; }
+
+
+/* active label */
+.css-slider__control[data-value="1"]:checked ~ .css-slider__labels .css-slider__label:nth-child(1),
+.css-slider__control[data-value="2"]:checked ~ .css-slider__labels .css-slider__label:nth-child(2),
+.css-slider__control[data-value="3"]:checked ~ .css-slider__labels .css-slider__label:nth-child(3),
+.css-slider__control[data-value="4"]:checked ~ .css-slider__labels .css-slider__label:nth-child(4),
+.css-slider__control[data-value="5"]:checked ~ .css-slider__labels .css-slider__label:nth-child(5),
+.css-slider__control[data-value="6"]:checked ~ .css-slider__labels .css-slider__label:nth-child(6),
+.css-slider__control[data-value="7"]:checked ~ .css-slider__labels .css-slider__label:nth-child(7) {
+    background-color: red;
+    cursor: default;
 }
